@@ -1,0 +1,24 @@
+name: Converting SVG files to png files
+description: Convert all SVG graphics in a specific directory to png files
+inputs:
+  svgpath:
+    description: Directory with SVG files
+    required: true
+    default: svg/
+  pngpath:
+    description: The path where the converted image will go (existing folder)
+    required: true
+    default: png/
+  zoom:
+    description: The zoom factor to be applied
+    required: false
+    default: '1.0'
+runs:
+  using: composite
+  steps:
+    - name: Install librsvg2
+      run: sudo apt install -y librsvg2-bin
+      shell: bash
+    - name: Execute bash script to convert
+      run: ${{ github.action_path }}/svg-to-png.sh ${{ inputs.svgpath }} ${{ inputs.pngpath }} ${{ inputs.zoom }}
+      shell: bash
