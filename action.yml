@@ -13,6 +13,9 @@ inputs:
     description: The zoom factor to be applied
     required: false
     default: '1.0'
+branding:
+  icon: 'image'
+  color: 'blue'
 runs:
   using: composite
   steps:
